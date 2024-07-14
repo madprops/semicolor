@@ -10,7 +10,7 @@ from PySide6.QtCore import QTimer  # type: ignore
 
 def main() -> None:
     app = QApplication([])
-    picker, picker_row = make_picker()
+    picker, picker_row = make_picker(app)
     btn_row = make_buttons(picker)
 
     main_layout = QVBoxLayout()
@@ -39,12 +39,16 @@ def prepare_window(app: QApplication, main_layout: QVBoxLayout) -> None:
     app.exec()
 
 
-def make_picker() -> tuple[QColorDialog, QHBoxLayout]:
+def make_picker(app) -> tuple[QColorDialog, QHBoxLayout]:
     picker_row = QHBoxLayout()
     picker = QColorDialog()
     picker.setOption(QColorDialog.DontUseNativeDialog)
     picker.setOption(QColorDialog.NoButtons)
 
+    def close_window() -> None:
+        app.quit()
+
+    picker.finished.connect(close_window)
     picker.setMinimumWidth(200)
     picker.setMinimumHeight(100)
     picker.setStyleSheet("background-color: #666;")
