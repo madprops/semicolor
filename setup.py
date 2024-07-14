@@ -4,7 +4,7 @@ import shutil
 import json
 import platform
 
-with open("manifest.json", "r") as file:
+with open("semicolor/manifest.json", "r") as file:
     manifest = json.load(file)
 
 title = manifest["title"]
@@ -24,7 +24,7 @@ def _post_install():
 
 
 def _copy_icon_file():
-    source = Path(f"icon.png").expanduser().resolve()
+    source = Path(f"{program}/icon.png").expanduser().resolve()
     destination = Path(f"~/.local/share/icons/{program}.png").expanduser().resolve()
     shutil.copy2(source, destination)
 
@@ -37,7 +37,7 @@ Exec={Path(f"~/.local/bin/{program}").expanduser().resolve()}
 Icon={Path(f"~/.local/share/icons/{program}.png").expanduser().resolve()}
 Terminal=false
 Type=Application
-Categories=Utiliprogramty;
+Categories=Utility;
 """
 
     file_path = Path(f"~/.local/share/applications/{program}.desktop").expanduser().resolve()
