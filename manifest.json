@@ -1,0 +1,8 @@
+{
+    "version": "1.0.0",
+    "title": "Semicolor",
+    "program": "semicolor",
+    "author": "madprops",
+    "repo": "github.com/madprops/semicolor",
+    "description": "Simple color picker"
+}
