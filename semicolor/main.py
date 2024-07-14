@@ -1,3 +1,6 @@
+# Standard
+from pathlib import Path
+
 # Libraries
 from PySide6.QtWidgets import QApplication, QHBoxLayout, QVBoxLayout  # type: ignore
 from PySide6.QtWidgets import QPushButton, QWidget, QColorDialog
@@ -27,7 +30,9 @@ def prepare_window(app: QApplication, main_layout: QVBoxLayout) -> None:
     window.setLayout(main_layout)
     window.show()
 
-    window.setWindowIcon(QIcon("icon.png"))
+    here = Path(__file__).parent
+    path = Path(here, "icon.png")
+    window.setWindowIcon(QIcon(str(path)))
     window.setWindowTitle("Semicolor")
     app.setStyleSheet("QWidget { background-color: #333; color: #FFF; }")
     app.exec()
