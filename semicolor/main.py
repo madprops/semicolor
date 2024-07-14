@@ -27,6 +27,7 @@ def copy(text: str) -> None:
 
 def prepare_window(app: QApplication, main_layout: QVBoxLayout) -> None:
     window = QWidget()
+    main_layout.setSizeConstraint(QVBoxLayout.SetFixedSize)
     window.setLayout(main_layout)
     window.show()
 
